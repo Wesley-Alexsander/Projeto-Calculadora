@@ -52,7 +52,7 @@ Esses serão os principáis ids usados.
 ## **Conceitos **<span style="color: yellow;">JavaScript<span>**** 
  
  
-Antes de codar nós precisaremos entender melhor 2 conseito, o MVC(Model View Controller) e o POO(Orientação a Objeto). Estes dois conceitos ajudarão a entender melhor como organizar seu código e seus dados. 
+Antes de codar nós precisaremos entender melhor 2 conceito, o MVC(Model View Controller) e o POO(Orientação a Objeto). Estes dois conceitos ajudarão a entender melhor como organizar seu código e seus dados. 
  
  
 **<h3 style="color:rgb(153,50,204); font-weight: bold;:">MVC (Model View Controller)</h3>** 
@@ -142,7 +142,10 @@ Objeto é a representação de tudo alguma coisa que existe, em forma de dados e
  
 <br> 
  
- 
+# Iniciando nosso projeto
+Primeiro vamos começar criando uma classe ```CalcController``` em nosso arquivo ```controller.js```
+
+<img src="./img/iniciando.png">
  
 Agora vamos instanciar uma classe, para isso criaremos uma variável chamada calculadora e vamos utilizar a palavra reservada **```new```** para fazer referência a nossa classe. 
  
@@ -152,16 +155,13 @@ Agora vamos instanciar uma classe, para isso criaremos uma variável chamada cal
  
 > Podemos ler essa linha de codigo como: "A variável calculadora recebe uma nova copia da classe CalcController" 
  
- 
+
 <br> 
-<br> 
  
- 
-No nosso arquivo controle, nós criamos a nossa classe e atribuímos a ela a nosso primeiro Método, o constructor. 
-Este método vai ser executado assim que iniciarmos nossa classe. 
- 
- 
-O construtor é um método especial para criar e inicializar um objeto criado a partir de uma classe. Basicamente ele vai ajudar a construir todo objeto criado a partir da classe. 
+
+**<h2>Método Constructor</h2>**
+
+Agora que criamos a nossa classe nós começaremos atribuindo a ela o nosso primeiro Método, o **```constructor```**. Este método vai ser executado assim que iniciarmos nossa classe, ele cria e inicializa um objeto criado a partir de uma classe, basicamente ele vai ajudar a construir todo objeto criado a partir da  classe em que o objeto esta vinculado/instanciado. 
  
  
 <img src="./img/constructor.PNG"> 
@@ -172,12 +172,27 @@ O construtor é um método especial para criar e inicializar um objeto criado a 
  
 A palavra reservada ```this``` neste caso, faz com que o objeto criado a partir desta classe contenha esses atributos já definidos, que poderão ser chamados em qualquer parte da nossa classe, ou seja, o **this** é uma referência ao próprio objeto instanciado que está recebendo aqueles atributos. 
  
+ <img src="./img/this.png">
+
+> Basicamente o pode ser lido da seguinte forma: "deste objeto instanciado, este atributo tem o valor de..." 
+  
+<br>
+
+**<h2>Método initialize</h2>**
  
-Basicamente o pode ser lido da seguinte forma: "deste objeto instanciado, este atributo tem o valor de..." 
- 
- 
- 
- 
+ O metodo initialize vai conter dentro dele tudo que queremos que aconteça ao iniciar a calculadora, como este metodo precisa inicializar junto com a função construtora nós teremos que executalo dentro do nosso metodo construtor, para assim que a nossa instancia for criada esse metodos já esteja sendo executando.
+
+<img src="./img/initialize-exec.PNG">
+
+Depois disto nós agora a definiremos o que esse metodo ```initialize``` vai executar, começaremos dizendo que ele vai selecionar todos as tags que contem nossos ```id``` principais. Nós faremos isso para que a gente consiga manipular o conteudo ```HTML``` das nossas tags, isso vai permitir alterar os texto que aparece dentro do visor da nossa calculadora.
+
+<img src="./img/variaveis-initialize.png">
+
+Agora basta fazermos os testes e mudar o valor do html das nossas tags usando o ```.innerHTML```
+
+<img src="./img/inneHtml.png">
+
+> Basicamente o innerHTML atribui um valor para o ```HTML/Texto``` interno de uma tag
 
  <br>
  <br>
