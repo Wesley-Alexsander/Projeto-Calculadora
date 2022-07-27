@@ -103,9 +103,9 @@ Na orientação a objeto os conceitos principais que precisamos entender são:
 
 `classes`, `Atributos`, `Métodos` e `Objetos`
 
-Basicamente eles representam variáveis e funções só que com alguns poderes e recursos amais.
+Basicamente eles representam variáveis e funções, só que com alguns poderes e recursos amais.
 
-**`Classes` **
+**`Classes`**
 
 É um conceito abstrato, como um molde que se torna concreto e palpável através da criação de um objeto, isso porque ela estará guardando os métodos e atributos que vão ajudar construir e manipular esses objetos.
 
@@ -139,17 +139,17 @@ Agora vamos instanciar uma classe, para isso criaremos uma variável chamada cal
 
 **<h2>Método Constructor</h2>**
 
-Agora que criamos a nossa classe nós começaremos atribuindo a ela o nosso primeiro Método, o **`constructor`**. Este método vai ser executado assim que iniciarmos nossa classe, ele ajuda a criar e inicializar um objeto novo que foi instanciado, basicamente ele construir todo objeto criado a partir da classe em que o este objeto esta vinculado/instanciado.
+Agora que criamos a nossa classe, nós começaremos atribuindo a ela o nosso primeiro Método, o **`constructor`**. Este método vai ser executado assim que iniciarmos nossa classe, ele ajudará a criar e inicializar um objeto novo que foi instanciado, basicamente ele vai construir todo objeto criado à partir da classe em que ele esta vinculado/instanciado.
 
 <img src="./img/constructor.PNG">
 
-> Note que dentro do método `constructor` nós temos dois atributos `displayCalc` e `dataAtual`.
+
 
 ## `This`
 
-A palavra reservada `this` neste caso, faz com que o objeto criado a partir desta classe contenha esses atributos já pré-definidos, eles poderão ser chamados em qualquer parte da nossa classe.
+Note que dentro do método `constructor`, nós temos dois atributos chamados `displayCalc` e `dataAtual`, A palavra reservada `this` neste caso, faz com que o objeto criado a partir desta classe contenha esses atributos já pré-definidos, e esses atributos poderão ser chamados em qualquer parte da nossa classe.
 
-O **this** basicamente é uma referência ao próprio objeto instanciado que está recebendo aqueles atributos.
+O **this** basicamente é uma referência ao próprio objeto instanciado que, está recebendo aqueles atributos.
 
  <img src="./img/this.png">
 
@@ -161,7 +161,7 @@ O **this** basicamente é uma referência ao próprio objeto instanciado que est
 
 >
 
-> Vamos usar o primeiro atributo para entender o que esses trechos de código estão fazendo.
+Vamos usar o primeiro atributo para entender o que esses trechos de código estão fazendo.
 
 ```JS
 
@@ -173,7 +173,7 @@ this._displayCalcEL = document.querySelector('#display')
 
 >
 
-> "Nesta linha de codigo nós estamos dizendo que: **Este** objeto criado a partir desta classe contem um atributo chamado `_displayCalc`, e este atributo recebe como valor o **elemento HTML** que contem o `id` igual a `display`"
+> "Nesta linha de codigo, nós estamos dizendo que: "**Este** objeto criado a partir desta classe, contem um atributo chamado `_displayCalc`, e este atributo recebe como valor o **elemento HTML** que contem o `id` igual a `display`"
 
 <br>
 
@@ -181,33 +181,33 @@ this._displayCalcEL = document.querySelector('#display')
 
 ## **Métodos Getters e Setters**
 
-Agora que já aprendemos a usar o método construtor e também a usar a palavra `this` para atribuir atributos para o nosso objeto instanciado, nós iremos entender o que fazem os métodos `Getters` e `Setters` em JavaScript.
+Agora que já aprendemos a usar o método construtor, e também a usar a palavra `this` para atribuir atributos para o nosso objeto instanciado, nós iremos entender o que fazem os métodos `Getters` e `Setters` em JavaScript.
 
-O `Getters` é utilizado pelo prefixo `get` que tem a função de retornar um determinado valor.
+O `Getters` é utilizado pelo prefixo `get`, que tem a função de retornar um determinado valor.
 
-O `Setters` é utilizado pelo prefixo `set` que tem a função de atribuir um valor.
+O `Setters` é utilizado pelo prefixo `set`, que tem a função de atribuir um valor.
 
 Agora que entendemos o que cada um desses métodos fazem, nós iremos ver na prática eles funcionando.
 
 <img src="./img/get-set.PNG">
 
-> No método `get` estamos basicamente dizendo que seu nome vai ser o `displayCalc`, e que ele vai nos retornar o texto interno do atributo `_displayCalcEl` neste objeto instanciado.
+> No método `get` estamos basicamente dizendo que, seu nome vai ser o `displayCalc`, e que ele vai nos retornar o texto interno do atributo `_displayCalcEl` neste objeto instanciado.
 
 >
 
-> Já no caso do método `set` nós estamos dizendo que o HTML interno do atributo `_displayCalcEl` vai receber o valor do parâmetro definido.
+> Já no caso do método `set`, nós estamos dizendo que o HTML interno do atributo `_displayCalcEl` vai receber o valor do parâmetro definido.
 
-Agora basta criamos esses mesmos métodos só que para os outros atributos do nosso objeto.
+Agora basta criarmos esses mesmos métodos para os outros atributos do nosso objeto.
 
-No caso da data nós passaremos como valor que vai ser retornado uma nova data instanciada, isso vai permitir a manipulação dela posteriormente:
+No caso da data, nós passaremos como valor que vai ser retornado uma nova data instanciada, isso vai permitir a manipulação dela posteriormente:
 
 <img src="./img/data.PNG">
 
-Depois vamos definir os métodos que atribuirão um valor para os nossos elementos **HTML** (**"data"** e **"hora"**)
+Depois, vamos definir os métodos que atribuirão um valor para os nossos elementos **HTML** (**"data"** e **"hora"**)
 
 <img src="./img/date-time.PNG">
 
-Com isso nós podemos testar se estes métodos estão realmente funcionando, faremos isso indo direto na **`devTools`** do navegador, lá vamos digitar os seguintes comandos:
+Com isso, nós podemos testar se estes métodos estão realmente funcionando, faremos isso indo direto na **`devTools`** do navegador, lá vamos digitar os seguintes comandos:
 
 ```JS
 
@@ -216,16 +216,13 @@ Com isso nós podemos testar se estes métodos estão realmente funcionando, far
 calculator.displayDate = new Date().toLocaleDateString('pt-BR')
 
 
-
-
-
 /*================== Hora local ====================*/
 
 calculator.displayTime = new Date().toLocaleTimeString('pt-BR')
 
 ```
 
-Eles permitirão que a gente veja se realmente os dados serão mostrados no display da nossa calculadora.
+Eles permitirão que nós vejamos se realmente os dados serão mostrados no display da nossa calculadora.
 
 <img src="./gif/date-time.gif">
 
@@ -235,11 +232,11 @@ Eles permitirão que a gente veja se realmente os dados serão mostrados no disp
 
 <br>
 
-## **Passagem de horas com SetInterval**
+## **Passagem de horas com "SetInterval"**
 
-No gif acima talvez você tenha notado que as horas que foram mostradas no display da calculadora estavam estáticas, mas na verdade nós queremos que o valor no display seja atualizado a cada segundo, permitindo observar as horas passando igual a um relógio.
+No gif acima, talvez você tenha notado que as horas que foram mostradas no display da calculadora estavam estáticas, mas na verdade nós queremos que o valor no display seja atualizado a cada segundo, permitindo observar as horas passando igual a um relógio.
 
-O método que vai nos permitir fazer essa atualização é o `setInterval()`, este método define um intervalo de tempo para algo ser executado, esse intervalo é definido passando dois argumentos para ele, o primeiro é a função/tarefa que ele vai executar e o segundo é o intervalo de tempo \*\*"EM MILISEGUNDOS".
+O método que vai nos permitir fazer essa atualização é, o `setInterval()`. Este método define um intervalo de tempo para algo ser executado, esse intervalo é definido passando dois argumentos para ele, o primeiro é a função/tarefa que ele vai executar, e o segundo é o intervalo de tempo **"EM MILISEGUNDOS"**.
 
 Veja sua sintaxe:
 
@@ -249,47 +246,47 @@ setInterval(função, intervalo_em_milisegundos)
 
 ```
 
-No nosso caso a função vai ser atualizar a hora atual no display a cada 1 segundo.
+No nosso caso, a função vai ser atualizar a hora atual no display a cada 1 segundo.
 
-Para tornar tudo automático vamos criar um método chamado `initialize`, daremos a ele esse nome porque sua função será executar algumas tarefas assim que nossa calculadora for iniciada.
+Para tornar tudo automático, vamos criar um método chamado `initialize`. Daremos a ele esse nome porque, sua função será executar algumas tarefas assim que nossa calculadora for iniciada.
 
 <img src="./gif/initialize.gif">
 
-> Note que chamamos e executamos o nosso método dentro do nosso construtor, isso porque basicamente estamos querendo que sempre que um novo Objeto Calculadora for instanciado esse método será executado.
+> Note que chamamos e executamos o nosso método dentro do nosso construtor, isso porque basicamente estamos querendo que sempre que um novo Objeto Calculadora seja instanciado esse método também seja executado.
 
 Agora basta usarmos o `setInterval` para criar nossa atualização de data e hora no display da calculadora.
 
 <img src="./gif/locale.gif">
 
-> Note que estamos dizendo que o nosso método `displayDate` vai receber como valor a data instanciada no método `currentDate` na forma de texto, e também que ela vai seguir a localização da linguagem "pt-BR".
+> Note também que estamos dizendo no exemplo acima, que o nosso método `displayDate` vai receber como valor a data instanciada no nosso `currentDate` em forma de texto, e também que ela vai seguir a localização da linguagem "pt-BR".
 
 <img src="./img/interval-date.PNG">
 
-Nós basicamente estamos dizendo que nosso método `displayDate` vai inserir um determinado valor no HTML interno da nossa tag.
+Nós basicamente estamos dizendo que nosso método `displayDate`, vai inserir um determinado valor no HTML interno da nossa tag.
 
 <img src="./img/displayDate.PNG">
 
-Por fim é só fazer a mesma coisa com a horas.
+Por fim, é só fazer a mesma coisa com a horas.
 
 <img src="./img/current-time.PNG">
 
-O mais interessante é que como definimos um intervalo de 1 segundo para essas informações serem mostradas no display, a hora será atualiza em tempo real, permitindo observar a transição dos segundos, minutos e horas.
+O mais interessante, é que como definimos um intervalo de 1 segundo para essas informações serem mostradas no display, a hora será atualiza em tempo real, permitindo observar a transição dos segundos, minutos e horas.
 
 <img src="./gif/time.gif">
 
-Agora como um bónus a mais, nós vamos deixar o nosso codigo mais organizado e também vamos corrigir o delay que temos ao instanciarmos um novo objeto calculadora.
+Agora como um bónus a mais, nós vamos deixar o nosso codigo mais organizado, e também vamos corrigir o delay que temos ao instanciarmos um novo objeto calculadora.
 
-Primeiro criaremos um método chamado `setDisplayDateTime` e atribuiremos a ele a tarefa que o `setInterval` estava fazendo.
+Primeiro criaremos um método chamado `setDisplayDateTime`, e atribuiremos a ele a tarefa que o `setInterval` estava fazendo.
 
 <img src="./img/setDisplay.PNG">
 
-Depois chamaremos e executaremos esse método dentro do nosso `initialize`, mas dessa vez fazermos com que ele também seja executado antes do nosso `setInterval`, isso permite que sempre que atualizarmos nossa **Pag** com nossa calculadora, a data e a hora apareçam de forma quase que instantânea e comecem a se atualizar a partir dai.
+Depois, chamaremos e executaremos esse método dentro do nosso `initialize`, mas dessa vez faremos com que ele também seja executado antes do nosso `setInterval`, isso permite que sempre que atualizarmos nossa **Pag** com nossa calculadora, a data e a hora apareçam de forma quase que instantânea e comecem a se atualizar a partir dai.
 
 <img src="./img/setDisplay-initialize.PNG">
 
-Podemos ainda formatar nossa data e definir coisas como: quanto dígitos o dia terá ou até mesmo se o mês será em informado em formato de string ou number.
+Podemos ainda formatar nossa data, e definir coisas como: "Quantos dígitos o dia terá, ou até mesmo se o mês será em informado em formato de string ou number".
 
-Para isso basta nós passarmos um segundo parâmetro para nosso `toLocateDateString()`, esse parâmetro vai ser um objeto informando as nossas pré definições para esta data local.
+Para isso, basta nós passarmos um segundo parâmetro para nosso `toLocateDateString()`, esse parâmetro vai ser um objeto informando as nossas pré definições para esta data local.
 
 Exemplo:
 
