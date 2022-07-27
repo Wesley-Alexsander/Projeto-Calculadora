@@ -158,45 +158,199 @@ Agora vamos instanciar uma classe, para isso criaremos uma variável chamada cal
 
 <br> 
  
-
-**<h2>Método Constructor</h2>**
-
-Agora que criamos a nossa classe nós começaremos atribuindo a ela o nosso primeiro Método, o **```constructor```**. Este método vai ser executado assim que iniciarmos nossa classe, ele cria e inicializa um objeto criado a partir de uma classe, basicamente ele vai ajudar a construir todo objeto criado a partir da  classe em que o objeto esta vinculado/instanciado. 
+**<h2>Método Constructor</h2>** 
  
  
-<img src="./img/constructor.PNG"> 
- 
- 
->Note que dentro do método constructor nós temos dois atributos ```displayCalc``` e ```dataAtual```. 
- 
- 
-A palavra reservada ```this``` neste caso, faz com que o objeto criado a partir desta classe contenha esses atributos já definidos, que poderão ser chamados em qualquer parte da nossa classe, ou seja, o **this** é uma referência ao próprio objeto instanciado que está recebendo aqueles atributos. 
- 
- <img src="./img/this.png">
-
-> Basicamente o pode ser lido da seguinte forma: "deste objeto instanciado, este atributo tem o valor de..." 
+Agora que criamos a nossa classe nós começaremos atribuindo a ela o nosso primeiro Método, o **```constructor```**. Este método vai ser executado assim que iniciarmos nossa classe, ele cria e inicializa um objeto criado a partir de uma classe, basicamente ele vai ajudar a construir todo objeto criado a partir da classe em que o objeto esta vinculado/instanciado.  
   
-<br>
-
-**<h2>Método initialize</h2>**
- 
- O metodo initialize vai conter dentro dele tudo que queremos que aconteça ao iniciar a calculadora, como este metodo precisa inicializar junto com a função construtora nós teremos que executalo dentro do nosso metodo construtor, para assim que a nossa instancia for criada esse metodos já esteja sendo executando.
-
-<img src="./img/initialize-exec.PNG">
-
-Depois disto nós agora a definiremos o que esse metodo ```initialize``` vai executar, começaremos dizendo que ele vai selecionar todos as tags que contem nossos ```id``` principais. Nós faremos isso para que a gente consiga manipular o conteudo ```HTML``` das nossas tags, isso vai permitir alterar os texto que aparece dentro do visor da nossa calculadora.
-
-<img src="./img/variaveis-initialize.png">
-
-Agora basta fazermos os testes e mudar o valor do html das nossas tags usando o ```.innerHTML```
-
-<img src="./img/inneHtml.png">
-
-> Basicamente o innerHTML atribui um valor para o ```HTML/Texto``` interno de uma tag
-
- <br>
- <br>
   
+<img src="./img/constructor.PNG">  
+  
+  
+>Note que dentro do método constructor nós temos dois atributos ```displayCalc``` e ```dataAtual```.  
+  
+  
+A palavra reservada ```this``` neste caso, faz com que o objeto criado a partir desta classe contenha esses atributos já pré definidos, que poderão ser chamados em qualquer parte da nossa classe, ou seja, o **this** é uma referência ao próprio objeto instanciado que está recebendo aqueles atributos.  
+  
+ <img src="./img/this.png"> 
+ 
+ 
+> Basicamente o pode ser lido da seguinte forma: "Este objeto instanciado contem um atributo que recebe o valor de..."  
+> 
+> Vamos usar o primeiro atributo para entender o que estas linhas de código estão fazendo, estamos dizendo o seguinte:  
+> 
+>"Este objeto criado a partir desta classe, contem um atributo chamado ```_displayCalc```, e este atributo recebe como valor o **elemento HTML** que contem o ```id``` igual a ```display```" 
+ 
+ 
+<br> 
+<br> 
+ 
+ 
+## **Métodos Getters e Setters** 
+Agora que já aprendemos a usar o método construtor, e também aprendemos a usar a palavra ```this``` para atribuir atributos para o nosso objeto instanciado, nós iremos entender o que fazem os métodos ```Getters``` e ```Setters``` em JavaScript. 
+ 
+ 
+O ```Getters``` é utilizado pelo prefixo ```get``` que tem a função de retornar um determinado valor. 
+ 
+ 
+O ```Setters``` é utilizado pelo prefixo ```set``` que tem a função de atribuir um valor.  
+ 
+ 
+Agora que entendemos o que cada um desses métodos faz, vamos ver na pratica eles funcionando. 
+ 
+ 
+<img src="./img/get-set.PNG"> 
+ 
+ 
+> No método ```get``` estamos basicamente dizendo que seu nome vai ser o ```displayCalc```, e que este método vai nos retornar o texto interno do atributo ```_displayCalcEl``` neste objeto instanciado. 
+> 
+>Já no caso do método ```set``` nós estamos dizendo que o HTML interno do atributo ```_displayCalcEl``` vai receber o valor do parâmetro recebido 
+ 
+ 
+Agora basta criamos esses mesmos métodos só que para os outros atributos do nosso objeto. 
+ 
+ 
+No caso da data nós passaremos como valor que vai ser retornado uma nova data instanciada, isso vai permitir a manipulação da data posteriormente: 
+ 
+ 
+<img src="./img/data.PNG"> 
+ 
+ 
+Depois vamos definir os métodos que atribuirão um valor para os nossos elementos **HTML** (**"data"** e **"hora"**) 
+ 
+ 
+<img src="./img/date-time.PNG"> 
+ 
+ 
+Com isso nós podemos testar se estes métodos estão funcionando indo direto na devTools do navegador, lá vamos digitar os seguintes comandos: 
+```JS 
+ 
+ 
+/*================== Data local ====================*/ 
+calculator.displayDate = new Date().toLocaleDateString('pt-BR') 
+ 
+ 
+/*================== Hora local ====================*/ 
+calculator.displayTime = new Date().toLocaleTimeString('pt-BR') 
+``` 
+ 
+ 
+<img src="./gif/date-time.gif"> 
+ 
+ 
+> Note que assim que os comandos foram digitados no console do devTools do navegador, os valores foram mostrados no display da nossa calculadora. 
+ 
+ 
+<br> 
+<br> 
+ 
+ 
+## **Horas com SetInterval** 
+No gif acima talvez você tenha notado que as horas que foram mostradas no display da calculadora estavam estáticas, que o valor no display seja atualizado a cada segundo. 
+ 
+ 
+O método que vai nos permitir fazer essa atualização é o ```setInterval()```, este método define um intervalo de tempo para algo ser executado, esse intervalo definido passando dois argumentos para esse método, o primeiro é a função/tarefa que ele vai executar e o segundo é o intervalo de tempo **"EM MILISEGUNDOS". 
+ 
+ 
+Veja sua sintaxe: 
+```JS 
+setInterval(função, intervalo_em_milisegundos) 
+``` 
+No nosso caso a função vai ser atualizar a hora atual no display a cada 1 segundo. 
+ 
+ 
+Para tornar tudo automático vamos criar um método chamado ```initialize```, daremos a ele esse nome porque sua função será executar algumas tarefas assim que nossa calculadora for iniciada. 
+ 
+ 
+<img src="./gif/initialize.gif"> 
+ 
+ 
+> Note que chamamos o nosso método dentro do nosso construtor, isso porque basicamente estamos falando que sempre que um novo Objeto Calculadora for instanciado esse método será executado. 
+ 
+ 
+Agora basta usarmos o ```setInterval``` para criar nossa atualização de data e hora no display da calculadora. 
+ 
+ 
+<img src="./gif/locale.gif">  
+ 
+ 
+> Note que estamos dizendo que o nosso método ```displayDate``` vai receber como valor a data instanciada no método ```currentDate``` na forma de texto seguindo a localização da linguagem "pt-BR". 
+ 
+ 
+Basicamente estamos passando um novo objeto data instanciado: 
+ 
+ 
+<img src="./img/interval-date.PNG"> 
+ 
+ 
+E passando ele para nosso método ```displayDate``` inserir no HTML interno da nossa tag. 
+ 
+ 
+<img src="./img/displayDate.PNG"> 
+ 
+ 
+Por fim é só fazer a mesma coisa com a horas. 
+ 
+ 
+<img src="./img/current-time.PNG"> 
+ 
+ 
+O mais interessante é que como definimos um intervalo de 1 segundo para essas informações serem mostradas no display, a hora será atualiza em tempo real. 
+ 
+ 
+<img src="./gif/time.gif"> 
+ 
+ 
+Agora como toque a mais no nosso código, de forma a deixa-lo mais organizado e também corrigir o delay que temos ao instanciarmos um novo objeto calculadora e a data e hora ser mostrada no display. 
+ 
+ 
+Primeiro criaremos um método chamado ```setDisplayDateTime``` e atribuiremos a ele a tarefa que o ```setInterval``` estava fazendo. 
+ 
+ 
+<img src="./img/setDisplay.PNG"> 
+ 
+ 
+Depois chamaremos e executaremos esse método dentro do nosso ```initialize```, mas dessa vez fazermos com que ele seja executado antes do nosso ```setInterval``` e dentro dele também, isso permite que assim que sempre que atualizarmos nossa o **Pag** com nossa calculadora, a data e a hora apareçam de forma quase que instantânea e comecem a se atualizar a partir dai. 
+ 
+ 
+<img src="./img/setDisplay-initialize.PNG"> 
+ 
+ 
+Podemos ainda formatar nossa data e definir coisas como: quanto defitos o dia terá, se o mês será em forma de string ou number e etc... 
+Para isso basta nós passarmos um segundo parâmetro para nosso método ```toLocateDateString()```, esse parâmetro vai ser um objeto informando as nossas pré definições para esta data local. 
+Exemplo:  
+```JS 
+    this.displayDate = this.currentDate.toLocaleDateString(this.locale, { 
+      day: "2-digit", 
+      month: "short", ou "long" // "short" abrevia o mês e o "log" poe por extenso 
+      year: "numeric" // põe a data com os 4 dígitos 
+    }) 
+``` 
+<img src="./img/date-formate.PNG"> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## **Sites de consulta** 
  
  
