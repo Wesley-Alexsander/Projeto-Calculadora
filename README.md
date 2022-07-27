@@ -6,7 +6,7 @@ JavaScript - Curso COMPLETO com 6 Projetos REAIS</a>)
 
 Neste projeto faremos somente a parte do script, dando funcionalidade a nossa calculadora.
 
-Todo o front-end e os arquivos necessários foram previamente fornecidos pelo próprio curso e podem ser encontrados em <a  href="https://github.com/hcodebr/curso-javascript-projeto-calculadora-clone">gitHub/Hcode</a>
+Todo o front-end e os arquivos necessários foram previamente fornecidos pelo próprio curso, e podem ser encontrados em <a  href="https://github.com/hcodebr/curso-javascript-projeto-calculadora-clone">gitHub/Hcode</a>
 
 ![Calculadora](https://firebasestorage.googleapis.com/v0/b/hcode-com-br.appspot.com/o/calculadora-hcode.jpg?alt=media&token=5406aa3f-b965-401c-9b4e-654609c78b33)
 
@@ -75,7 +75,7 @@ Imagem retirada do site <a hrf="https://www.treinaweb.com.br/blog/o-que-e-mvc">T
 
 2° A camada de manipulação dos dados **(Model)**, é responsável pelo acesso e utilização dos dados.
 
-3° A camada de controle da aplicação **(Controller)**, é a camada responsável por ligar o `**`model`** e a **`view`\*\*, fazendo com que os dados possam ser repassados de um para o outro.
+3° A camada de controle da aplicação **(Controller)**, é a camada responsável por ligar o **```model```** e a **```view```**, fazendo com que os dados possam ser repassados de um para o outro.
 
 <br>
 
