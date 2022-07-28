@@ -1,8 +1,6 @@
 # Calculadora JavaScript
 
-Este projeto foi proposto pela <a href="https://www.hcode.com.br">Hcode</a> no seu curso fornecido na plataforma Udemy (<a href="https://www.udemy.com/course/javascript-curso-completo/">
-
-JavaScript - Curso COMPLETO com 6 Projetos REAIS</a>)
+Este projeto foi proposto pela <a href="https://www.hcode.com.br">Hcode</a> no seu curso fornecido na plataforma Udemy (<a href="https://www.udemy.com/course/javascript-curso-completo/"> JavaScript - Curso COMPLETO com 6 Projetos REAIS</a>)
 
 Neste projeto faremos somente a parte do script, dando funcionalidade a nossa calculadora.
 
@@ -16,7 +14,7 @@ Todo o front-end e os arquivos necessários foram previamente fornecidos pelo pr
 
 # Documentando o aprendizado
 
-## **Entendendo o arquivo **<span style="color: rgb(207, 110, 110);">HTML<span>\*\*\*\*
+## **Entendendo o arquivo <span style="color: rgb(207, 110, 110);">HTML<span>**
 
 A calculadora que estamos vendo foi feita por meio de arquivos SVG, e gerada por softwares de edição de imagem.
 
@@ -55,7 +53,7 @@ Teremos também dentro da nossa tag `<g id="base">` 3 elementos que daremos func
 
 <br>
 
-## **Conceitos **<span style="color: yellow;">JavaScript<span>\*\*\*\*
+## **Conceitos <span style="color: yellow;">JavaScript<span>**
 
 Antes de codar nós precisaremos entender melhor 2 conceito, o MVC (Model View Controller) e o POO (Orientação a Objeto). Estes dois conceitos ajudarão a entender melhor como organizar nosso código e dados.
 
@@ -75,7 +73,7 @@ Imagem retirada do site <a hrf="https://www.treinaweb.com.br/blog/o-que-e-mvc">T
 
 2° A camada de manipulação dos dados **(Model)**, é responsável pelo acesso e utilização dos dados.
 
-3° A camada de controle da aplicação **(Controller)**, é a camada responsável por ligar o **```model```** e a **```view```**, fazendo com que os dados possam ser repassados de um para o outro.
+3° A camada de controle da aplicação **(Controller)**, é a camada responsável por ligar o **`model`** e a **`view`**, fazendo com que os dados possam ser repassados de um para o outro.
 
 <br>
 
@@ -142,8 +140,6 @@ Agora vamos instanciar uma classe, para isso criaremos uma variável chamada cal
 Agora que criamos a nossa classe, nós começaremos atribuindo a ela o nosso primeiro Método, o **`constructor`**. Este método vai ser executado assim que iniciarmos nossa classe, ele ajudará a criar e inicializar um objeto novo que foi instanciado, basicamente ele vai construir todo objeto criado à partir da classe em que ele esta vinculado/instanciado.
 
 <img src="./img/constructor.PNG">
-
-
 
 ## `This`
 
@@ -303,8 +299,33 @@ Exemplo:
     })
 
 ```
+**Exemplo de display:**
 
 <img src="./img/date-formate.PNG">
+
+<br>
+<br>
+<br>
+
+
+# **Adicionando eventos de click**
+
+Vamos aprender agora como adicionar o evento de click nas teclas da nossa calculadora. A forma mais eficiente de começar a fazer isso é pedir ao próprio JavaScript que selecione todos os botões para nós, faremos isso utilizando o metodo `querySelectorAll`.
+
+> Este método seleciona todos os elementos HTML que tenham o mesmo nome de tag ou classe.
+
+Começaremos então definindo um novo método para armazenar e executar os eventos de click, chamaremos ele de `initButtonsEvents`, e assim como o `initialize` nós o colocaremos para execurtar assim que um objeto calculadora for instanciado.
+
+<img src="./gif/initButons.gif">
+
+Agora vamos criar uma variavel que vai receber todos os elementos que forem botões, e em seguida seleciona-los usando o `querySelectorAll`.
+
+<img src="./img/select-buttons.PNG">
+
+E dentro do parentesses nós passaremos em formato de string os nomes dos ids, classes ou tags que correspondem aos elementos que vamos selecionar.
+Neste caso, iremos passar duas condições: A primeira é que queremos selecionar todas as tags `<g>` filhas do nosso elemento com id `buttons`, e a segunda é que queremos fazer o mesmo só que dessa vez com o id `parts`.
+
+
 
 ## **Sites de consulta**
 

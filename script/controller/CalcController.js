@@ -7,7 +7,9 @@ class CalcController {
     this._currentDate
     this.initialize() /* Executa este método sempre que um novo objeto calculadora
     for instanciado*/
+    this.initButtonsEvents()
   }
+
 
   initialize() {
    
@@ -18,7 +20,18 @@ class CalcController {
     }, 1000)
   }
 
+  
+  /*=============== Metodo de Eventos =================*/
 
+
+  initButtonsEvents(){
+
+    let buttons = document.querySelectorAll("#buttons > g, #parts > g")
+        
+  }
+
+
+  /*=============== Metodos de formatação de Data =================*/
   setDisplayDateTime(){
     this.displayDate = this.currentDate.toLocaleDateString(this.locale, {
       day: "2-digit",
@@ -29,6 +42,8 @@ class CalcController {
   }
 
 
+
+  /*=============== Metodos Display =================*/
   get displayTime() {
     return this._timeEl.innerHTML
   }
@@ -44,6 +59,9 @@ class CalcController {
     this._dateEl.innerHTML = value
   }
 
+  
+  /*=============== Metodos Display de Calculos =================*/
+
   get displayCalc() {
     return this._displayCalcEL.innerHTML // retorna o que estiver escrito no html interno da tag
   }
@@ -52,6 +70,7 @@ class CalcController {
     this._displayCalcEL.innerHTML = value // Atribui um valor ao html interno da tag
   }
 
+  /*=============== Metodos Display de Datas =================*/
   get currentDate() {
     return new Date()
   }
