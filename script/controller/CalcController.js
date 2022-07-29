@@ -23,11 +23,36 @@ class CalcController {
   
   /*=============== Metodo de Eventos =================*/
 
+  addEventListenerAll(element, events, func){
+    
+    events.split(" ").forEach(event => {
+
+      element.addEventListener(event, func, false)
+
+    })
+
+  }
+
 
   initButtonsEvents(){
 
     let buttons = document.querySelectorAll("#buttons > g, #parts > g")
-        
+    
+    buttons.forEach(btn => {
+
+        this.addEventListenerAll(btn, 'click drag', () => {
+
+          console.log(btn.className.baseVal.replace("btn-", ""))
+          
+        })
+
+        this.addEventListenerAll(btn, 'mouseover mouseup mousedown', () => {
+
+            btn.style.cursor = "pointer"
+          
+        })
+    })
+    
   }
 
 

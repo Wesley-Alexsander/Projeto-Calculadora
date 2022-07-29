@@ -13,6 +13,7 @@ Todo o front-end e os arquivos necessários foram previamente fornecidos pelo pr
 <br>
 
 # Documentando o aprendizado
+<br>
 
 ## **Entendendo o arquivo <span style="color: rgb(207, 110, 110);">HTML<span>**
 
@@ -97,9 +98,7 @@ A ordem de importação dos arquivos obrigatoriamente deve ser essa, para que o 
 
 **<h3 style="color:rgb(153,50,204); font-weight: bold;:"> POO (Programação Orientada a objetos) </h3>**
 
-Na orientação a objeto os conceitos principais que precisamos entender são:
-
-`classes`, `Atributos`, `Métodos` e `Objetos`
+Na orientação a objeto os conceitos principais que precisamos entender são: "`classes`, `Atributos`, `Métodos` e `Objetos`"
 
 Basicamente eles representam variáveis e funções, só que com alguns poderes e recursos amais.
 
@@ -145,7 +144,7 @@ Agora que criamos a nossa classe, nós começaremos atribuindo a ela o nosso pri
 
 Note que dentro do método `constructor`, nós temos dois atributos chamados `displayCalc` e `dataAtual`, A palavra reservada `this` neste caso, faz com que o objeto criado a partir desta classe contenha esses atributos já pré-definidos, e esses atributos poderão ser chamados em qualquer parte da nossa classe.
 
-O **this** basicamente é uma referência ao próprio objeto instanciado que, está recebendo aqueles atributos.
+O **this** basicamente é uma referência ao próprio objeto instanciado que está recebendo aqueles atributos.
 
  <img src="./img/this.png">
 
@@ -244,7 +243,7 @@ setInterval(função, intervalo_em_milisegundos)
 
 No nosso caso, a função vai ser atualizar a hora atual no display a cada 1 segundo.
 
-Para tornar tudo automático, vamos criar um método chamado `initialize`. Daremos a ele esse nome porque, sua função será executar algumas tarefas assim que nossa calculadora for iniciada.
+Para tornar tudo automático, vamos criar um método chamado `initialize`. Daremos a ele esse nome porque sua função será executar algumas tarefas assim que nossa calculadora for iniciada.
 
 <img src="./gif/initialize.gif">
 
@@ -323,7 +322,125 @@ Agora vamos criar uma variavel que vai receber todos os elementos que forem bot�
 <img src="./img/select-buttons.PNG">
 
 E dentro do parentesses nós passaremos em formato de string os nomes dos ids, classes ou tags que correspondem aos elementos que vamos selecionar.
-Neste caso, iremos passar duas condições: A primeira é que queremos selecionar todas as tags `<g>` filhas do nosso elemento com id `buttons`, e a segunda é que queremos fazer o mesmo só que dessa vez com o id `parts`.
+Neste caso, iremos passar duas condições: 
+
+1° A condição que queremos selecionar todas as tags `<g>` filhas do nosso elemento com id `buttons`.
+
+2° A condição de que queremos fazer o mesmo só que dessa vez com o id `parts`.
+
+<img src="./img/buttons-selector.PNG">
+
+> Perceba que estamos usando a seguinte expressão **`#buttons > g`**, isso significa que estamos selecionando a tag filha **`<g>`** do elemento de **`#buttons`** 
+ 
+Para ter certeza se realmente esses elementos foram selecionados, vamos imprimir essa variavel no nosso console do navegador.
+
+<img src="./gif/node-list.gif">
+
+> Perceba no gif acima que nos foi retornado um nodeList com todos os elementos html que represetam os botões.
+
+Agora nós precisamos adicionar um evento de click para cada um desses botões, faremos isso usando o metodo **`addEventListener()`**. Este método recebe dois parametros, o primeiro é o nome do evento que ele vai ficar esperando acontecer, e o segundo é a função que será executada assim que o evento for acionado.
+
+Estrutura:
+```JS
+  addEventListener('click', function)
+```
+
+Quando estamos usando **`addEventListener()`**, nós precisamos nos atentar que ele só adiciona um evento para um unico elemento. Ou seja, para listas de elemento ele não funciona, talvez você tenha percebido que quando imprimimos no console a variavel `buttons` nos foi retornado um NodeList, o que nos impossibilita de usar este método, então para utiliza-lo nós precisaremos informar ao **JavaScript** que ele precisa adicionar este evento em **"cada um dos elementos".**
+
+Para isso nós utilizaremos o metodo **forEach**, ele resumidamente adiciona uma função para cada elemento de uma lista/array.
+**Sintaxe:**
+```JS
+lista.forEach((elements)=>{..}) // executa a função em cada um do elementos da lista, esses elementos sao pegos pelo parametro da função.
+```
+Agora que sabemos que podemos adicionar uma função para cada elemento da nossa NodeList, vamos definir que essa função vai executar nosso evento de click.
+
+<img src="./img/foreach.PNG">
+
+> Observer que o forEach recebe uma arrow function, e essa função tem um parametro que nós demos o nome de **`"btn"`**, esse parametro basicamente recebe a cada novo loop, um novo item da lista que o foreach está percorrendo. Por este motivo estamos utilizando esse mesmo parametro para adicionar o **`addEventListener()`**, permitindo que sejae adicionado este evento em cada um dos elementos da lista inteira.
+
+Para saber se realemnte tudo esta funcionando, basta nós colocar para imprimir o elemento que estamos clicando e observa se ele aparece no console da **devTools**
+
+<img src="./gif/list-event.gif">
+
+> Perceba que o evento realmente já está sendo aplicado para cada botão da nossa calculadora.
+
+Agora vem a grande sacada na construção da nossa calculadora, note que os nomes das classes dos botões já informam se eles são numericos ou operadores.
+
+<img src="./img/buttons-class.PNG">
+
+Então sabendo dessa informação, basta nós extrairmos do nome da classe apenas a informação que serve para identificar o botão que estamos clicando, nós faremos isso selecionado os nomes de classe desses botões e em seguida selecionado o valor basse desses nomes, que é basicamente o nome da classe em si.
+
+<img src="./gif/baseVal.gif">
+
+Agora que já aprendemos a pegar somente o nome das nossas classes, nós podemos usar o método **`replace()`** que sunstitui um texto por alguma outra coisa, só que neste caso vamos usa-lo para substituir o **`btn-`** por uma string vazia, deixando somente os numeros e nomes de operadores.
+
+
+<img src="./gif/replace-names.gif">
+
+Se nós quisermos adicionar mais de um evento ao nosso botão como por exemplo o evento de clicar e arrastar (drag), nós teremos que criar multiplos **EventListeners** e isso tornaria o cogigo muito grande, por isso iremos criar um méto especifico que irá se encarregar de receber esses evemtos e executa-los.
+
+Esse método vai se chamar `AddEventListenerAll`, e nele iremos colocar 3 parametros, o primeiro será o elemento/botão que vamos adicionar o evento, o segundo é uma lista contendo todos os eventos, e o terceiro é a função que o evento vai executar.
+
+<img src="./img/eventAll.PNG">
+
+Agora basta nós trocarmos o metodo `addEventlistener` pelo nosso `addEventlistenerAll` e passarmos todos os paramtreos que definimos anteriormente.
+
+<img src="./gif/this-listener.gif">
+
+Perceba que ao trocarmos os métodos nós tambem substituimos a palavra **`btn`** pela **`this`**, isso porque basicamente estamos dizendo que queremos executar **este** método da nossa classe em cada botão que nosso **`forEach`** nos passar.
+
+Em seguida ja passamos os 3 paramos que o nosso método necessita, sendo o primeiro o botão que o forEach está nos passando, o segundo a string com nome de todos os eventos que serão executados, e por ultimo a função que os eventos vão executar.
+
+<img src="./img/listenerAll-parameters.PNG">
+
+Agora basta criar dentro do nosso eventos recebidos, para isso começaremos usando o método **`split()`** para transformar nossa **`string`** que contem os eventos em um **`array`**, passando como separação entre as palavras o espaço em branco, e em seguida fazendo um forEach no array que o **split** retorna para pegar cada um desses eventos.
+
+<img src="./gif/this-listener.gif">
+
+> note acima que usamos o console log para verificar se o split estava nos retornando o array corretamente, após isso nós ja demos um forEach no nosso split ou seja no valor que ele retornou, assim pegamos cada um dos nomes dos eventos no nosso array.
+
+Por fim é so adicionarmos dentro da função que o nosso forEach recebe de argumento um `addEventlistener` em cada elemento/botão que nosso método recebeu como parametro,
+
+<img src="./img/elements-event1.PNG">
+
+Agora nós passamos como argumento para nosso  **`addEventlistener`** o evento que o nosso **`forEach`** pegou, e atambém função que recebemos de parametro do nosso método **`addEventlistenerAll`**.
+
+
+<img src="./img/elements-event2.PNG">
+
+É impotante lembrar que quando clicamos no botão nós acionamos eventos tantos no SVG dos numeros e letras, quanto no SVG que dá o formato para nosso botão, então isso pode dar um conflito em algum momento e fazer com que quando um botão seja apertados o evento seja acionado de forma duplicada.
+
+Para evitarmos isso basta adiconar um terceiro parametro para nosso **`addEventlistener`**, esse parametro vai ser a palavra reservada **`false`**, isso vai impedir de o evento ser executado com duplicidade.
+
+<img src="./img/eventListener-false.PNG">
+ 
+ Basta agora ir no console do navegador e verificar se tudo está funcionando corretamente.
+
+<img src="./gif/teste.gif">
+
+
+Com isso qualquer evento novo que adicionarmos vai ser executado, para testar vamos aproveitar e criar um novo evento, ele vai transformar nosso cursor do mouse em uma maozinha cada vez que a gente passar ele por cima de alguma tecla.
+
+Faremos isso utilizando nosso mesmo método **`addEventlistenerAll`** novamente dentro do nosso Método **`initButtonsEvent`**.
+
+<img src="./img/cursor-eventListener.PNG">
+
+Passamos como argumento dessas vez, os eventos de manter, passar e retirar o mouse em cima do botão.
+
+<img src="./img/cursor-events.PNG">
+
+Agora é só definir o que a função que esses ventos vao executar vai fazer, para isso vamos apenas dizer que o estilo do **`btn`** vai ser igual a um **`"pointer"`**
+
+<img src="./img/cursor-pointer.PNG">
+
+
+
+<br>
+<br>
+
+Projeto em Andamento....
+<br>
+<br>
 
 
 
